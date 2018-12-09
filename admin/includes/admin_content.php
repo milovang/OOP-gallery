@@ -9,24 +9,17 @@
             </h1>
             <?php
 
-
-
-//           $user_id = User::find_user_by_id(2);
+//            $user = new User();
+//            $user->username = "examle_username";
+//            $user->password = "password";
+//            $user->first_name = "John";
+//            $user->last_name = "Doe";
 //
-//           $user = User::instantation($user_id);
-//           echo $user->username
+//            $user->create();
 
-
-
-//            $users = User::find_all_users();
-//
-//            foreach ($users as $user){
-//               echo $user->username . "<br>";
-//            }
-
-
-            $user_id = User::find_user_by_id(2);
-            echo $user_id->username;
+            $user = User::find_user_by_id(7);
+            $user->last_name = "test save";
+            $user->save();
 
 
             ?>
