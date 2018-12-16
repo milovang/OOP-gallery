@@ -23,9 +23,10 @@ class Session {
     /**
      * @return bool
      */
-    public function is_signed_in()
-    {
+    public function is_signed_in(){
+
         return $this->signed_in;
+
     }
 
     public function login($user){
@@ -63,19 +64,23 @@ class Session {
     }
 
     public function message($msg=""){
+
         if(!empty($msg)){
             $_SESSION['message'] = $msg;
         } else {
             return $this->message;
         }
+
     }
 
     public function check_message(){
+
         if(isset($_SESSION['message'])){
             $this->message = $_SESSION['message'];
         } else {
-           $this->message = "";
+            $this->message = "";
         }
+
     }
 
 }

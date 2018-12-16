@@ -16,10 +16,19 @@
 //            $user->last_name = "Doe";
 //
 //            $user->create();
+//
+//            $user = User::find_user_by_id(8);
+//            $user->last_name = "lastname";
+//            $user->password = "123";
+//            $user->save();
 
-            $user = User::find_user_by_id(7);
-            $user->last_name = "test save";
-            $user->save();
+//            $user = new User();
+//            $user->username = "markasdao";
+//            $user->first_name = "masdadrko";
+//            $user->last_name = "marsdadakovic";
+//            $user->password = "123";
+//
+//            $user->create();
 
 
             ?>

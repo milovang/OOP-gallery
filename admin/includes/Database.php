@@ -10,61 +10,61 @@ require_once("new_config.php");
 
 class Database {
 
-public $connection;
+    public $connection;
 
-function __construct(){
+    function __construct(){
 
-    $this->open_db_connection();
-
-}
-
-public function open_db_connection(){
-
-
-    $this->connection = new mysqli(DB_HOST,DB_USER, DB_PASS,DB_NAME,DB_PORT);
-
-    if($this->connection->connect_errno){
-
-    die("Database connect error" . $this->connection->connect_error);
+        $this->open_db_connection();
 
     }
 
- }
+    public function open_db_connection(){
 
-public function query($sql){
 
-    $result = $this->connection->query($sql);
-    $this->confirm_query($result);
-    return $result;
+        $this->connection = new mysqli(DB_HOST,DB_USER, DB_PASS,DB_NAME,DB_PORT);
 
-}
+        if($this->connection->connect_errno){
 
-private function confirm_query($result){
+            die("Database connect error" . $this->connection->connect_error);
 
-    if(!$result){
-        die("Query Failed" . $this->connection->error);
+        }
+
     }
 
-}
+    public function query($sql){
 
-public function escape_string($string){
+        $result = $this->connection->query($sql);
+        $this->confirm_query($result);
+        return $result;
 
-    $escape_string = $this->connection->real_escape_string($string);
-    return $escape_string;
+    }
 
-}
+    private function confirm_query($result){
 
-public function insert_id(){
+        if(!$result){
+            die("Query Failed" . $this->connection->error);
+        }
 
-    return $this->connection->insert_id;
+    }
 
-}
+    public function escape_string($string){
 
-public function the_insert_id(){
+        $escape_string = $this->connection->real_escape_string($string);
+        return $escape_string;
 
-    return mysqli_insert_id($this->connection);
+    }
 
-}
+    public function insert_id(){
+
+        return $this->connection->insert_id;
+
+    }
+
+    public function the_insert_id(){
+
+        return mysqli_insert_id($this->connection);
+
+    }
 
 }
 
