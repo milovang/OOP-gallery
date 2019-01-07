@@ -30,6 +30,10 @@
 //
 //            $user->create();
 
+            $users = User::find_all();
+            foreach ($users as $user){
+                echo $user->username;
+            }
 
             ?>
             <ol class="breadcrumb">
