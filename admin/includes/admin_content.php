@@ -22,18 +22,15 @@
 //            $user->password = "123";
 //            $user->save();
 
-//            $user = new User();
-//            $user->username = "markasdao";
-//            $user->first_name = "masdadrko";
-//            $user->last_name = "marsdadakovic";
-//            $user->password = "123";
-//
-//            $user->create();
+            $photo = new photo();
+            $photo->title = "photo 2";
+            $photo->size = "22";
+            $photo->save();
 
-            $users = User::find_all();
-            foreach ($users as $user){
-                echo $user->username;
-            }
+//            $photos = Photo::find_all();
+//            foreach ($photos as $photo){
+//                echo $photo->title;
+//            }
 
             ?>
             <ol class="breadcrumb">
