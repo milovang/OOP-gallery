@@ -22,15 +22,16 @@
 //            $user->password = "123";
 //            $user->save();
 
-            $photo = new photo();
-            $photo->title = "photo 2";
-            $photo->size = "22";
-            $photo->save();
+//            $photo = new photo();
+//            $photo->title = "photo 2";
+//            $photo->size = "22";
+//            $photo->save();
 
 //            $photos = Photo::find_all();
 //            foreach ($photos as $photo){
 //                echo $photo->title;
 //            }
+
 
             ?>
             <ol class="breadcrumb">
