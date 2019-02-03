@@ -32,6 +32,9 @@
 //                echo $photo->title;
 //            }
 
+            $photo = Photo::find_by_id(16);
+
+            echo $photo->title;
 
             ?>
             <ol class="breadcrumb">
