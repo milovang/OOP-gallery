@@ -2,6 +2,14 @@
 
 /* Index photo page */
 
+.user-image {
+    width: 62px !important;
+    height: 62px;
+    border-radius: 5px;
+}
+
+/* Index photo page */
+
 .admin-photo-thumbnail {
 
     width: 200px;
