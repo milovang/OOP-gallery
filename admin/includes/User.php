@@ -2,6 +2,7 @@
 
 class User extends Db_object {
 
+    protected static $db_table = "users";
     protected static $db_table_fields = array('username', 'password','first_name', 'last_name', 'user_image');
     public $id;
     public $username;
@@ -35,41 +36,32 @@ class User extends Db_object {
 
     }
 
-    public function save_user_and_image(){
+    public function upload_photo(){
 
-        if($this->id){
-
-            $this->update();
-
-        } else {
-
-            if(!empty($this->errors)){
-                return false;
-            }
-
-            if(empty($this->user_image) || empty($this->tmp_path)){
-                $this->errors[] = "The file was not available";
-                return false;
-            }
-
-            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
-
-            if(file_exists($target_path)){
-                $this->errors[] = "The file {$this->user_image} already exist";
-                return false;
-            }
-
-            if(move_uploaded_file($this->tmp_path, $target_path)){
-                if($this->create()){
-                    unset($this->tmp_path);
-                    return true;
-                }
-            } else {
-                $this->errors[] = "The file directory probably does not have permission";
-                return false;
-            }
-
+        if(!empty($this->errors)){
+            return false;
         }
+
+        if(empty($this->user_image) || empty($this->tmp_path)){
+            $this->errors[] = "The file was not available";
+            return false;
+        }
+
+        $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+
+        if(file_exists($target_path)){
+            $this->errors[] = "The file {$this->user_image} already exist";
+            return false;
+        }
+
+        if(move_uploaded_file($this->tmp_path, $target_path)){
+                unset($this->tmp_path);
+                return true;
+        } else {
+            $this->errors[] = "The file directory probably does not have permission";
+            return false;
+        }
+
     }
 
     public function image_path_placeholder(){
