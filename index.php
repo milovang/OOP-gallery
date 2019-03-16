@@ -24,7 +24,7 @@
 
 
 
-        </div>
+            </div>
         <!-- /.row -->
 
         <?php include("includes/footer.php"); ?>
