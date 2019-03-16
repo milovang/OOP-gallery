@@ -9,9 +9,11 @@ if (!$session->is_signed_in()){
 
 <?php
 
-$comments = Comment::find_all();
+if(empty($_GET['id'])){
+    redirect("photos.php");
+}
 
-
+$comments = Comment::find_comments($_GET['id']);
 
 ?>
 
@@ -52,7 +54,7 @@ $comments = Comment::find_all();
                                     <td><?=$comment->id; ?></td>
                                     <td><?=$comment->author; ?>
                                         <div class="action_links">
-                                            <a href="delete_comment.php?id=<?=$comment->id; ?>">Delete</a>
+                                            <a href="delete_comment_photo.php?id=<?=$comment->id; ?>">Delete</a>
                                         </div>
                                     </td>
                                     <td><?=$comment->body; ?></td>
