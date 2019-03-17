@@ -34,90 +34,85 @@ $comments = Comment::find_comments($photo->id);
 
 ?>
 
+            <div class="row">
 
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-12">
 
+                    <!-- Blog Post -->
 
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+                    <!-- Title -->
+                    <h1><?=$photo->title; ?></h1>
 
-                <!-- Blog Post -->
+                    <!-- Author -->
+                    <p class="lead">
+                        by <a href="#">Milovan</a>
+                    </p>
 
-                <!-- Title -->
-                <h1>Blog Post Title</h1>
+                    <hr>
 
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
-                </p>
+                    <!-- Date/Time -->
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
-                <hr>
+                    <hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                    <!-- Preview Image -->
+                    <img class="img-responsive" src="admin/<?=$photo->picture_path(); ?>" alt="">
 
-                <hr>
+                    <hr>
 
-                <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <!-- Post Content -->
+                    <p class="lead"><?=$photo->caption; ?></p>
+                    <p><?=$photo->description; ?></p>
+                    <hr>
 
-                <hr>
+                    <!-- Blog Comments -->
 
-                <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                    <!-- Comments Form -->
+                    <div class="well">
+                        <h4>Leave a Comment:</h4>
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <label>Author:</label>
+                                <input type="text" name="author" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="body" class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
 
-                <hr>
+                    <hr>
 
-                <!-- Blog Comments -->
+                    <!-- Posted Comments -->
 
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form" method="post">
-                        <div class="form-group">
-                            <label>Author:</label>
-                            <input type="text" name="author" class="form-control">
+                    <!-- Comment -->
+
+                    <?php foreach($comments as $comment){ ?>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><?= $comment->author; ?></h4>
+                                <?= $comment->body; ?>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea name="body" class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    <?php } ?>
+
+
                 </div>
 
-                <hr>
-
-                <!-- Posted Comments -->
-
-                <!-- Comment -->
-
-                <?php foreach($comments as $comment){ ?>
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><?= $comment->author; ?></h4>
-                            <?= $comment->body; ?>
-                        </div>
-                    </div>
-                <?php } ?>
-
-
+                <!-- Blog Sidebar Widgets Column -->
+    <!--            <div class="col-md-4">-->
+    <!---->
+    <!---->
+    <!--                --><?php //include("includes/sidebar.php"); ?>
+    <!---->
+    <!---->
+    <!---->
+    <!--            </div>-->
+                <!-- /.row -->
             </div>
-
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-
-                <?php include("includes/sidebar.php"); ?>
-
-
-
-            </div>
-            <!-- /.row -->
-
             <?php include("includes/footer.php"); ?>
